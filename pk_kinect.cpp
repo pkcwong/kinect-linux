@@ -31,12 +31,32 @@ bool Kinect::fetch()
 	this->depth = this->frames[libfreenect2::Frame::Depth];
 }
 
-libfreenect2::Frame* Kinect::getRgba()
+libfreenect2::Frame *Kinect::getRgba()
 {
 	return this->rgba;
 }
 
+libfreenect2::Frame *Kinect::getIr()
+{
+	return this->ir;
+}
+
+libfreenect2::Frame *Kinect::getDepth()
+{
+	return this->depth;
+}
+
 cv::Mat Kinect::getRgbaMat()
 {
-	return cv::Mat(this->getRgba()->height, this->getRgba()->width, CV_8UC4, this->getRgba()->data).clone();
+	return cv::Mat((int) (this->getRgba()->height), (int) (this->getRgba()->width), CV_8UC4, this->getRgba()->data).clone();
+}
+
+cv::Mat Kinect::getIrMat()
+{
+	return cv::Mat((int) (this->getIr()->height), (int) (this->getIr()->width), CV_16U, this->getIr()->data).clone();
+}
+
+cv::Mat Kinect::getDepthMat()
+{
+	return cv::Mat((int) (this->getDepth()->height), (int) (this->getDepth()->width), CV_16U, this->getDepth()->data).clone();
 }

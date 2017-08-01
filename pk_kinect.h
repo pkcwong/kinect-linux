@@ -2,7 +2,6 @@
 #define _PK_KINECT
 
 #include <vector>
-
 #include <libfreenect2/libfreenect2.hpp>
 #include <libfreenect2/frame_listener_impl.h>
 #include <libfreenect2/registration.h>
@@ -16,19 +15,23 @@ class Kinect
 
 private:
 	const unsigned int config = libfreenect2::Frame::Color | libfreenect2::Frame::Ir | libfreenect2::Frame::Depth;
-	libfreenect2::Freenect2Device* device = NULL;
-	libfreenect2::SyncMultiFrameListener* listener;
+	libfreenect2::Freenect2Device *device = NULL;
+	libfreenect2::SyncMultiFrameListener *listener;
 	libfreenect2::FrameMap frames;
-	libfreenect2::Frame* rgba;
-	libfreenect2::Frame* ir;
-	libfreenect2::Frame* depth;
+	libfreenect2::Frame *rgba;
+	libfreenect2::Frame *ir;
+	libfreenect2::Frame *depth;
 
 public:
 	static std::vector<std::string> initialize();
-	Kinect(std::string serial);
+	explicit Kinect(std::string serial);
 	bool fetch();
-	libfreenect2::Frame* getRgba();
+	libfreenect2::Frame *getRgba();
+	libfreenect2::Frame *getIr();
+	libfreenect2::Frame *getDepth();
 	cv::Mat getRgbaMat();
+	cv::Mat getIrMat();
+	cv::Mat getDepthMat();
 
 };
 
