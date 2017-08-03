@@ -8,7 +8,6 @@
 #include <libfreenect2/packet_pipeline.h>
 #include <libfreenect2/logger.h>
 #include <opencv2/core.hpp>
-#include <opencv2/highgui/highgui.hpp>
 
 class Kinect
 {

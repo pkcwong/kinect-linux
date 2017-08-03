@@ -53,10 +53,10 @@ cv::Mat Kinect::getRgbaMat()
 
 cv::Mat Kinect::getIrMat()
 {
-	return cv::Mat((int) (this->getIr()->height), (int) (this->getIr()->width), CV_16U, this->getIr()->data).clone();
+	return cv::Mat((int) (this->getIr()->height), (int) (this->getIr()->width), CV_8UC4, this->getIr()->data).clone();
 }
 
 cv::Mat Kinect::getDepthMat()
 {
-	return cv::Mat((int) (this->getDepth()->height), (int) (this->getDepth()->width), CV_16U, this->getDepth()->data).clone();
+	return cv::Mat((int) (this->getDepth()->height), (int) (this->getDepth()->width), CV_8UC4, this->getDepth()->data).clone();
 }
